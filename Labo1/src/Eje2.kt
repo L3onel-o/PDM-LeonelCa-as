@@ -5,7 +5,7 @@ class Calculadora(val marca: String, val aniosVida: Int, var precio: Double){
 
     //Funcion de mostrar informacion de la calculadora
     fun mostrarInformacion(){
-        println("Informacion de la calculadora: Marca: $marca, Vida util: $aniosVida, Precio: $precio")
+        println("Informacion de la calculadora: Marca: $marca, Vida util: $aniosVida anios, Precio: $precio")
     }
 
     //Funcion de sumar
@@ -41,7 +41,7 @@ class Calculadora(val marca: String, val aniosVida: Int, var precio: Double){
 fun main() {
 
     var calculadora1 = Calculadora("Casio", 10, 53.0)
-
+    var opcion = 0
     do{
         var num1 = 0.0
         var num2 = 0.0
@@ -54,35 +54,23 @@ fun main() {
         println("6. Salir")
 
         print("Selecciona la opcion que quieres hacer: ")
-        var opcion:Int = readln().toInt()
-        if (opcion == 1) {
-            print("Ingrese el numero 1: ")
-            num1 = readln().toDouble()
-            print("Ingrese el numero 2: ")
-            num2 = readln().toDouble()
-            calculadora1.sumar(num1, num2)
+        opcion = readln().toInt()
 
-        } else if (opcion == 2) {
+        if (opcion in 1..4) {
             print("Ingrese el numero 1: ")
             num1 = readln().toDouble()
             print("Ingrese el numero 2: ")
             num2 = readln().toDouble()
-            calculadora1.resta(num1, num2)
-        } else if (opcion == 3) {
-            print("Ingrese el numero 1: ")
-            num1 = readln().toDouble()
-            print("Ingrese el numero 2: ")
-            num2 = readln().toDouble()
-            calculadora1.multiplicacion(num1, num2)
-        } else if (opcion == 4) {
-            print("Ingrese el numero 1: ")
-            num1 = readln().toDouble()
-            print("Ingrese el numero 2: ")
-            num2 = readln().toDouble()
-            calculadora1.division(num1, num2)
-        } else if (opcion == 5) {
-            calculadora1.mostrarInformacion()
         }
 
+        when (opcion) {
+            1 -> calculadora1.sumar(num1, num2)
+            2 -> calculadora1.resta(num1, num2)
+            3 -> calculadora1.multiplicacion(num1, num2)
+            4 -> calculadora1.division(num1, num2)
+            5 -> calculadora1.mostrarInformacion()
+            6 -> println("La calculadora se apagara")
+            else -> println("La opcion elegida no es correcta, seleccione una valida")
+        }
     } while(opcion != 6)
 }
